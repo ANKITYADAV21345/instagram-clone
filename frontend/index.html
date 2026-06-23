@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation (Desktop) / Bottom Nav (Mobile) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <a href="#" id="nav-brand-logo">
+                    <span class="logo-text">Instagram</span>
+                    <i data-lucide="instagram" class="logo-icon"></i>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" id="nav-home">
+                    <i data-lucide="home"></i>
+                    <span class="nav-label">Home</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-search">
+                    <i data-lucide="search"></i>
+                    <span class="nav-label">Search</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-explore">
+                    <i data-lucide="compass"></i>
+                    <span class="nav-label">Explore</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-messages">
+                    <i data-lucide="message-circle"></i>
+                    <span class="nav-label">Messages</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-notifications">
+                    <i data-lucide="heart"></i>
+                    <span class="nav-label">Notifications</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-create">
+                    <i data-lucide="plus-square"></i>
+                    <span class="nav-label">Create</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-profile">
+                    <div class="nav-profile-pic">
+                        <img id="sidebar-profile-pic" src="https://api.dicebear.com/7.x/adventurer/svg?seed=yourProfile" alt="Profile">
+                    </div>
+                    <span class="nav-label">Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item" id="theme-toggle">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                    <span class="nav-label">Switch Theme</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-logout">
+                    <i data-lucide="log-out"></i>
+                    <span class="nav-label">Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Feed Column -->
+                <section class="feed-section">
+                    <!-- Stories Bar -->
+                    <div class="stories-container">
+                        <div class="stories-wrapper">
+                            <div class="story-item">
+                                <div class="story-ring active">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Alice" alt="Alice">
+                                </div>
+                                <span class="story-username">alice_dev</span>
+                            </div>
+                            <div class="story-item">
+                                <div class="story-ring active">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Bob" alt="Bob">
+                                </div>
+                                <span class="story-username">bob_codes</span>
+                            </div>
+                            <div class="story-item">
+                                <div class="story-ring active">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Charlie" alt="Charlie">
+                                </div>
+                                <span class="story-username">charlie.js</span>
+                            </div>
+                            <div class="story-item">
+                                <div class="story-ring">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=David" alt="David">
+                                </div>
+                                <span class="story-username">david_design</span>
+                            </div>
+                            <div class="story-item">
+                                <div class="story-ring">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Eva" alt="Eva">
+                                </div>
+                                <span class="story-username">eva_frontend</span>
+                            </div>
+                            <div class="story-item">
+                                <div class="story-ring">
+                                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Frank" alt="Frank">
+                                </div>
+                                <span class="story-username">frank_db</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feed Posts List -->
+                    <div class="posts-feed" id="posts-feed">
+                        <!-- Loading State -->
+                        <div class="feed-loading" id="feed-loading">
+                            <div class="spinner"></div>
+                            <p>Loading posts...</p>
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div class="feed-empty hidden" id="feed-empty">
+                            <i data-lucide="image"></i>
+                            <h3>No posts yet</h3>
+                            <p>Share your first photo to start the feed!</p>
+                            <button class="btn btn-primary" id="btn-empty-create">Create Post</button>
+                        </div>
+
+                        <!-- Dynamic Posts Container -->
+                        <div id="posts-container"></div>
+                    </div>
+                </section>
+
+                <!-- Right Sidebar (Profile & Suggestions) - Desktop Only -->
+                <aside class="right-sidebar">
+                    <!-- Current User Profile Card -->
+                    <div class="profile-card">
+                        <img class="profile-avatar" id="profile-card-avatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=yourProfile" alt="User">
+                        <div class="profile-info">
+                            <span class="profile-username" id="profile-card-username">you_coder</span>
+                            <span class="profile-fullname" id="profile-card-email">Developer</span>
+                        </div>
+                        <button class="btn-link" id="btn-logout-sidebar">Logout</button>
+                    </div>
+
+                    <!-- Suggestions Header -->
+                    <div class="suggestions-header">
+                        <h3>Suggestions for you</h3>
+                        <button class="btn-link text-bold">See All</button>
+                    </div>
+
+                    <!-- Suggestions List -->
+                    <div class="suggestions-list">
+                        <div class="suggestion-item">
+                            <div class="suggestion-user">
+                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Grace" alt="Grace">
+                                <div class="suggestion-info">
+                                    <span class="username">grace_h</span>
+                                    <span class="relation">Followed by alice_dev + 3 more</span>
+                                </div>
+                            </div>
+                            <button class="btn-link-action">Follow</button>
+                        </div>
+                        <div class="suggestion-item">
+                            <div class="suggestion-user">
+                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Harry" alt="Harry">
+                                <div class="suggestion-info">
+                                    <span class="username">harry_w</span>
+                                    <span class="relation">New to Instagram</span>
+                                </div>
+                            </div>
+                            <button class="btn-link-action">Follow</button>
+                        </div>
+                        <div class="suggestion-item">
+                            <div class="suggestion-user">
+                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Ivy" alt="Ivy">
+                                <div class="suggestion-info">
+                                    <span class="username">ivy_creative</span>
+                                    <span class="relation">Follows you</span>
+                                </div>
+                            </div>
+                            <button class="btn-link-action">Follow</button>
+                        </div>
+                    </div>
+
+                    <!-- Footer Links -->
+                    <footer class="desktop-footer">
+                        <p>© 2026 INSTAGRAM CLONE BY ANTIGRAVITY</p>
+                    </footer>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal-overlay hidden" id="create-post-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create new post</h3>
+                <button class="modal-close-btn" id="modal-close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <form id="create-post-form" class="modal-body">
+                <!-- Step 1: File Selection -->
+                <div class="upload-zone" id="upload-zone">
+                    <div class="upload-zone-prompt">
+                        <i data-lucide="images" class="upload-icon"></i>
+                        <p>Drag photos and videos here</p>
+                        <button type="button" class="btn btn-primary" id="btn-select-file">Select from computer</button>
+                    </div>
+                    <input type="file" id="file-input" name="image" accept="image/*" class="hidden" required>
+                </div>
+
+                <!-- Step 2: Details Input (Hidden initially, shown after file selection) -->
+                <div class="post-details hidden" id="post-details">
+                    <div class="image-preview-pane">
+                        <img id="image-preview" src="" alt="Selected Preview">
+                        <button type="button" class="btn-change-image" id="btn-change-image">
+                            <i data-lucide="edit-3"></i> Change File
+                        </button>
+                    </div>
+                    
+                    <div class="metadata-pane">
+                        <div class="user-meta">
+                            <img class="user-meta-avatar" id="modal-user-avatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=yourProfile" alt="Profile">
+                            <span class="user-meta-username" id="modal-user-name">you_coder</span>
+                        </div>
+                        
+                        <textarea id="caption-input" name="caption" placeholder="Write a caption..."></textarea>
+                        
+                        <div class="pane-footer">
+                            <button type="submit" class="btn btn-primary btn-block" id="btn-submit-post">
+                                <span class="btn-text">Share</span>
+                                <span class="spinner hidden" id="submit-spinner"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

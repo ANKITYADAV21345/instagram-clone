@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone - Login & Register</title>
+    <meta name="description" content="Sign in or create an account for Instagram Clone">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <!-- Animated Background -->
+        <div class="bg-gradient-animate"></div>
+        <div class="bg-noise"></div>
+
+        <!-- Floating Orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="auth-container">
+            <!-- Left Side - Phone Mockup -->
+            <div class="auth-showcase">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="screen-content">
+                            <div class="screen-header">
+                                <div class="screen-brand">Instagram</div>
+                            </div>
+                            <div class="screen-post">
+                                <div class="screen-post-header">
+                                    <div class="screen-avatar"></div>
+                                    <div class="screen-username-bar"></div>
+                                </div>
+                                <div class="screen-image"></div>
+                                <div class="screen-actions">
+                                    <i data-lucide="heart" class="screen-icon"></i>
+                                    <i data-lucide="message-circle" class="screen-icon"></i>
+                                    <i data-lucide="send" class="screen-icon"></i>
+                                </div>
+                                <div class="screen-caption-bar"></div>
+                                <div class="screen-caption-bar short"></div>
+                            </div>
+                            <div class="screen-post second">
+                                <div class="screen-post-header">
+                                    <div class="screen-avatar"></div>
+                                    <div class="screen-username-bar"></div>
+                                </div>
+                                <div class="screen-image alt"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-text">
+                    <h2>Share your moments</h2>
+                    <p>Connect with friends, share your stories, and discover amazing content.</p>
+                </div>
+            </div>
+
+            <!-- Right Side - Auth Forms -->
+            <div class="auth-forms-wrapper">
+                <!-- Login Form Card -->
+                <div class="auth-card" id="login-card">
+                    <div class="auth-logo">Instagram</div>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="input-group">
+                            <input type="email" id="login-email" placeholder=" " required autocomplete="email">
+                            <label for="login-email">Email address</label>
+                            <div class="input-highlight"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="login-password" placeholder=" " required autocomplete="current-password">
+                            <label for="login-password">Password</label>
+                            <button type="button" class="toggle-password" data-target="login-password">
+                                <i data-lucide="eye" class="eye-icon"></i>
+                                <i data-lucide="eye-off" class="eye-off-icon hidden"></i>
+                            </button>
+                            <div class="input-highlight"></div>
+                        </div>
+                        <button type="submit" class="btn-auth" id="btn-login">
+                            <span class="btn-text">Log In</span>
+                            <div class="btn-loader hidden"></div>
+                        </button>
+                    </form>
+
+                    <div class="divider">
+                        <div class="divider-line"></div>
+                        <span>OR</span>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <button class="btn-social">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                        Log in with Facebook
+                    </button>
+
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <!-- Switch to Register -->
+                <div class="auth-switch-card" id="switch-to-register">
+                    <p>Don't have an account? <a href="#" id="show-register">Sign up</a></p>
+                </div>
+
+                <!-- Register Form Card -->
+                <div class="auth-card hidden" id="register-card">
+                    <div class="auth-logo">Instagram</div>
+                    <p class="auth-subtitle">Sign up to see photos and videos from your friends.</p>
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="input-group">
+                            <input type="email" id="register-email" placeholder=" " required autocomplete="email">
+                            <label for="register-email">Email address</label>
+                            <div class="input-highlight"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="register-username" placeholder=" " required autocomplete="username">
+                            <label for="register-username">Username</label>
+                            <div class="input-highlight"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="register-password" placeholder=" " required minlength="6" autocomplete="new-password">
+                            <label for="register-password">Password</label>
+                            <button type="button" class="toggle-password" data-target="register-password">
+                                <i data-lucide="eye" class="eye-icon"></i>
+                                <i data-lucide="eye-off" class="eye-off-icon hidden"></i>
+                            </button>
+                            <div class="input-highlight"></div>
+                        </div>
+
+                        <!-- Password strength indicator -->
+                        <div class="password-strength hidden" id="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strength-fill"></div>
+                            </div>
+                            <span class="strength-text" id="strength-text"></span>
+                        </div>
+
+                        <button type="submit" class="btn-auth" id="btn-register">
+                            <span class="btn-text">Sign Up</span>
+                            <div class="btn-loader hidden"></div>
+                        </button>
+                    </form>
+
+                    <p class="terms-text">
+                        By signing up, you agree to our <a href="#">Terms</a>, <a href="#">Privacy Policy</a> and <a href="#">Cookies Policy</a>.
+                    </p>
+                </div>
+
+                <!-- Switch to Login -->
+                <div class="auth-switch-card hidden" id="switch-to-login">
+                    <p>Have an account? <a href="#" id="show-login">Log in</a></p>
+                </div>
+
+                <!-- Toast Container -->
+                <div class="toast-container" id="toast-container"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="auth-footer">
+            <p>© 2026 Instagram Clone</p>
+        </footer>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
